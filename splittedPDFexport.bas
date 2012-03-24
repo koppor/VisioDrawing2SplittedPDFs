@@ -41,9 +41,6 @@ Private Const buttonCaption = "PDF Export"
 
 'Macro for executing the PDF export
 Public Sub PDFexport()
-    'save whole file as .pdf
-    'Application.ActiveDocument.ExportAsFixedFormat visFixedFormatPDF, pdfName, visDocExIntentPrint, visPrintAll ', 1, 7, False, True, True, True, False
-    
     'create .bat file for splitting into pdfs
     
     Dim intCounter As Integer
@@ -59,6 +56,9 @@ Public Sub PDFexport()
     filePath = Left(pdfName, j)
     fileNameWithoutExtension = Mid(pdfName, j + 1, i - j - 1)
     pdfName = Left(pdfName, i) + "pdf"
+    
+    'save whole file as .pdf
+    Application.ActiveDocument.ExportAsFixedFormat visFixedFormatPDF, pdfName, visDocExIntentPrint, visPrintAll ', 1, 7, False, True, True, True, False
     
     'Get the Pages collection for the active document.
     Set vsoPages = ActiveDocument.Pages
